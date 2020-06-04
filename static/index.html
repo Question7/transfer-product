@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文件传输</title>
+    <script src="js/jQuery.min.js" type="text/javascript"></script>
+</head>
+<body style="text-align: center;">
+    <div id="menu" style="width: 98%; text-align: right">
+        <a href="/logout">退出</a>
+        <button onclick="passwordPanel()">修改密码</button>
+    </div>
+    <div id="receive" style="width: 38%; margin-top: 20px; border:solid 1px #000; float:left">
+        <button style="margin-top: 5px;margin-left: 90%" onclick="listDstTransfers()">All</button>
+        <p style="margin-top: 0px">我接收到：</p>
+        <div id="r-data"></div>
+    </div>
+    <div id="send" style="width: 38%; margin-top: 20px; border:solid 1px #000; float:left">
+        <button style="margin-top: 5px;margin-left: 90%" onclick="listSrcTransfers()">All</button>
+        <p style="margin-top: 0px">我要发送：</p>
+        <div>
+            <select id="type" onchange="setSelector()">
+                <option value="USER">用户</option>
+                <option value="FOLDER">文件夹</option>
+            </select>
+            <select id="selector">
+            </select>
+            <input type="file" id="file">
+            <button onclick="addTransfer()">发送</button>
+        </div>
+        <div id="s-data"></div>
+    </div>
+    <div id="manager" style="width: 23%; margin-top: 20px; border:solid 1px #000; float:left">
+        <div id="r-folder" style="width: 100%; margin-top: 20px">
+            <p>接收文件夹</p>
+        </div>
+        <hr>
+        <div id="s-folder" style="width: 100%; margin-top: 20px">
+            <p>发送文件夹</p>
+            <button onclick="showCreateFolderPanel()">创建文件夹</button>
+        </div>
+    </div>
+    <div id="createFolder" style="width: 40%; z-index: 999; border: solid 1px #000000; display: none; background-color: #eee;position: fixed;margin-left: 30%; margin-top: 100px">
+        <div id="username" style="margin-top: 20px; text-align: left;margin-left: 20px; width: 80%;">
+        </div>
+        <br>
+        名称：<input type="text" id="create-name"/>
+        <br>
+        <br>
+        描述：<input type="text" id="create-comment"/>
+        <br>
+        <br>
+        <button onclick="addFolder()">创建</button>&nbsp;&nbsp;<button onclick="cancelAndClose()">取消</button>
+        <br>
+        <br>
+    </div>
+    <div id="folderPanel" style="width: 30%; z-index: 998; border: solid 1px #000000; display: none; background-color: #eee; position: fixed; margin-left: 40%; margin-top: 200px">
+        <div id="folder-user" style="width: 80%; margin-left: 10%;margin-top: 20px"></div>
+        <button onclick="closeFolderUser()">关闭</button>
+    </div>
+    <div id="password" style="width: 30%; margin-left: 35%;margin-top: 200px;border: solid 1px;z-index: 1000;position: fixed;display: none;background-color: #eee">
+        <br>
+        <hr>
+        旧密码：<input type="password" id="opd"><br>
+        新密码：<input type="password" id="npd"><br><br>
+        <button onclick="updatePassword()">确定</button><button onclick="closePassword()">取消</button>
+    </div>
+    <div id="admin" style="width: 30%; margin-left: 35%;margin-top: 100px;border: solid 1px;z-index: 1000;position: fixed;display: none;background-color: #eee">
+        <p style="text-align: right; width: 98%"><span onclick="closeManager()">X</span></p>
+        <p>添加用户</p>
+        账号：<input type="text" id="name"><br>
+        昵称：<input type="text" id="nick"><br>
+        密码：<input type="password" id="pwd"><br>
+        <br>
+        <button onclick="addUser()">添加</button>
+        <br>
+        <hr>
+        <p>修改文件保存时长</p>
+        <input id="period" type="text">天<br>
+        <br>
+        <button onclick="setPeriod()">修改</button>
+    </div>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+bin\java.exe -classpath .;.\lib\* com.anzhiyule.transfer.TransferApplication
